@@ -42,7 +42,7 @@ pip install .
 
 ## Uso
 
-Segue o exemplo de uso contido no arquivo [exemplo.py](https://github.com/bessavagner/brcovid/exemplo.py):
+Segue o exemplo de uso contido no arquivo [exemplo.py](https://github.com/bessavagner/brcovid/blob/master/exemplo.py):
 
 ~~~python
 import brcovid.api as brc
