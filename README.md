@@ -1,4 +1,4 @@
-# brcovid
+﻿# brcovid
 
 Pacote python para exibir os casos de covid-19 no Brasil em forma de texto simples:
 

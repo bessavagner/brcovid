@@ -7,12 +7,12 @@ A licensa dos dados é Creative Commons Attribution ShareAlike.
 """
 import requests
 import json
+import brcovid.brstates as states
 from datetime import date, datetime, timedelta
 
 API_BRASIL_IO = "https://brasil.io/api/dataset/covid19/caso/data"
 
-with open('brstates.json') as file:
-    states = json.load(file)
+states = states.initials
 
 # sigla dos estados em letras maiúsculas:
 siglas_stados = [key for key in states.keys()]
@@ -48,7 +48,7 @@ def state_cases(state):
         for result in results:
             if result['state'] == state:
                 if result['is_last']:
-                    message = f"Casos de {states[state]} - {date_format(result['date'])}\n"
+                    message = f"Casos de covid-19 em {states[state]} - {date_format(result['date'])}\n"
                     message += f"Total de casos: {result['confirmed']}\n"+\
                             f"Total de mortos: {result['deaths']}\n"
                 if not result['is_last']:
@@ -56,7 +56,6 @@ def state_cases(state):
                     death_daily = death - result['deaths']
                     message += f"Casos em 24h = {cases_daily}\n"
                     message += f"Morte em 24h = {death_daily}"
-                    print(message)
                     break
                 death = result['deaths']
                 cases = result['confirmed']
@@ -82,7 +81,7 @@ def city_cases(city):
             for result in results:
                 if result['city'] == city: 
                     if result['is_last']:
-                        message = f"Casos de {result['city']}/{result['state']}"
+                        message = f"Casos de covid-19 em {result['city']}/{result['state']}"
                         message +=f" - {date_format(result['date'])}\n"
                         message += f"Total de casos: {result['confirmed']}\n"+\
                                    f"Total de mortos: {result['deaths']}\n"
@@ -102,3 +101,28 @@ def city_cases(city):
                     page = data.json()
                 else:
                     return "Desculpe, não consegui ler os registros."
+
+def list_cities():
+    """
+    Returns:
+        str: Retorna lista de cidades brasileiras
+        contidas no dataset do Brasil.IO
+    """
+    data = requests.get(API_BRASIL_IO)
+    cities = []
+    if data.ok:
+        page = data.json()     
+        while True:
+            if page['next'] is None:
+                break
+            results = page['results']
+            for result in results:
+                if result['city'] not in cities:
+                    cities.append(result['city'])
+            data = requests.get(page['next'])
+            if data.ok:
+                page = data.json()
+            else:
+                break
+    return cities
+          

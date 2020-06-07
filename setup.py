@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name='brcovid',
-    version='1.0.0.dev1',
+    version='1.0',
     author="Vagner Bessa",
     author_email="bessavagner@gmail.com",
     description="Ler dados da covid-19 de estados ou cidades brasileiras.",
@@ -15,7 +15,7 @@ setuptools.setup(
     packages=setuptools.find_packages(),
     classifiers=[
         "Programming Language :: Python :: 3",
-        "License :: OSI Approved :: GNU LGPLv3",
+        "License :: OSI Approved :: GNU Lesser General Public License v3 or later (LGPLv3+)",
         "Operating System :: OS Independent",
     ],
     python_requires='>=3.6',

@@ -1,3 +1,12 @@
 .vscode/
 .brcovid/__pycache__/
+__pycache__/
+brcovid-1.0
 env/
+brcovid.egg-info/
+build/
+dist/
+brcovid_BESSAVAGNER.egg-info/
+brcovid-BESSAVAGNER-1.0.0.dev1/
+.pycirc
+.pycirc_
