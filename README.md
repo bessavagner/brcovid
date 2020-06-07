@@ -52,6 +52,16 @@ local = 'Crateús'
 print(brc.obter_dados(local))
 ~~~
 
+Output:
+
+~~~terminal
+Casos de Crateús/CE - 06/06/2020
+Total de casos: 264
+Total de mortos: 9
+Casos em 24h = 6
+Morte em 24h = 0
+~~~
+
 ## Agradecimentos
 
 - Insitutto Federal de Ciência e Tecnologia do Estado do Ceará.
