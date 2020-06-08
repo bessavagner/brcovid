@@ -13,3 +13,8 @@ brcovid-BESSAVAGNER-1.0.0.dev1/
 lista_cidades.npy
 brcovid/__pycache__/get_info.cpython-38.pyc
 exemplo.py
+brcovid/__pycache__/__init__.cpython-38.pyc
+*.pyc
+*.pyc
+*.pyc
+brcovid/__pycache__/brstates.cpython-38.pyc
