@@ -76,6 +76,7 @@ def city_cases(city):
             for result in results:
                 if result['city'] == city: 
                     if result['is_last']:
+                        print(result)
                         message = f"Casos de covid-19 em {result['city']}/{result['state']}"
                         message +=f" - {date_format(result['date'])}\n"
                         message += f"Total de casos: {result['last_available_confirmed']}\n"+\
