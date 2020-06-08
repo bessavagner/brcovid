@@ -11,3 +11,5 @@ brcovid-BESSAVAGNER-1.0.0.dev1/
 .pycirc
 .pycirc_
 lista_cidades.npy
+brcovid/__pycache__/get_info.cpython-38.pyc
+exemplo.py
