@@ -10,7 +10,7 @@ import json
 import brcovid.brstates as states
 from datetime import date, datetime, timedelta
 
-API_BRASIL_IO = "https://brasil.io/api/dataset/covid19/caso/data"
+API_BRASIL_IO = "https://brasil.io/api/dataset/covid19/caso_full/data"
 
 states = states.initials
 
@@ -113,6 +113,7 @@ def list_cities():
     if data.ok:
         page = data.json()     
         while True:
+            print(page['next'])
             if page['next'] is None:
                 break
             results = page['results']
@@ -123,6 +124,7 @@ def list_cities():
             if data.ok:
                 page = data.json()
             else:
+                print("Something went wrong")
                 break
     return cities
           
