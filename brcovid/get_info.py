@@ -49,7 +49,6 @@ def state_cases(state):
             if result['state'] == state:
                 if result['is_last']:
                     message = f"Casos de covid-19 em {states[state]} - {date_format(result['date'])}\n"
-                    message +=f" - {date_format(result['date'])}\n"
                     message += f"Total de casos: {result['last_available_confirmed']}\n"+\
                                 f"Total de mortos: {result['last_available_deaths']}\n"
                     message += f"Casos em 24h = {result['new_confirmed']}\n"
