@@ -49,16 +49,11 @@ def state_cases(state):
             if result['state'] == state:
                 if result['is_last']:
                     message = f"Casos de covid-19 em {states[state]} - {date_format(result['date'])}\n"
-                    message += f"Total de casos: {result['confirmed']}\n"+\
-                            f"Total de mortos: {result['deaths']}\n"
-                if not result['is_last']:
-                    cases_daily = cases - result['confirmed']
-                    death_daily = death - result['deaths']
-                    message += f"Casos em 24h = {cases_daily}\n"
-                    message += f"Morte em 24h = {death_daily}"
-                    break
-                death = result['deaths']
-                cases = result['confirmed']
+                    message +=f" - {date_format(result['date'])}\n"
+                    message += f"Total de casos: {result['last_available_confirmed']}\n"+\
+                                f"Total de mortos: {result['last_available_deaths']}\n"
+                    message += f"Casos em 24h = {result['new_confirmed']}\n"
+                    message += f"Morte em 24h = {result['new_deaths']}"
     return message
 
 
@@ -86,10 +81,8 @@ def city_cases(city):
                         message += f"Total de casos: {result['last_available_confirmed']}\n"+\
                                    f"Total de mortos: {result['last_available_deaths']}\n"
                         message += f"Casos em 24h = {result['new_confirmed']}\n"
-                        message += f"Morte em 24h = {result['new_confirmed']}"
+                        message += f"Morte em 24h = {result['new_deaths']}"
                         return message
-                    death = result['deaths']
-                    cases = result['confirmed']
             if page['next'] is None:
                 return "Não há registros."
             else:
